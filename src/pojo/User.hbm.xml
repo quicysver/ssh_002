@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <!--
+     | name 属性：实体类全路径
+     | table 属性：数据库表名称
+    -->
+    <class name="pojo.User" table="user1">
+        <!--
+         | Hibernate 要求实体类有一个属性唯一值，且要求表有字段作为唯一值
+         | name 属性：实体类的 id 属性名称
+         | column 属性：数据表字段名称
+        -->
+        <id name="id" column="id">
+            <!-- 设置数据库表 id 增长策略：Class 标签
+             | 属性值：increment、hilo、squence、identity、native、uuid、guid 等。
+            -->
+            <generator class="native"/>
+        </id>
+
+        <!-- 配置其他属性和表字段对应：Property 标签 -->
+        <property name="name" column="name" type="string"/>
+        <property name="salary" column="salary" type="java.lang.Integer"></property>
+    </class>
+</hibernate-mapping>
